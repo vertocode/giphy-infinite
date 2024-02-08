@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-5 w-4/5 w-full justify-center">
+  <div class="flex gap-5 w-3/5 justify-center">
     <q-input
       class="w-4/5"
       v-model="search"
