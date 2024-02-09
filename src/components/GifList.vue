@@ -2,8 +2,9 @@
   <GifDetailModal :gif="gitDetailsModal" @close="gitDetailsModal = null"/>
   <main
     v-if="gifsOrStickers.length"
-    class="mt-8 flex gap-2 w-full px-5 justify-center items-center"
+    class="mt-8 flex gap-2 w-full px-5 justify-center items-center position-relative"
   >
+    <ScrollToTopButton />
     <div
       v-for="gifOrSticker in gifsOrStickers" :key="gifOrSticker.id"
       class="bg-secondary cursor-pointer"
@@ -27,6 +28,7 @@ import { useGiphyFetch } from 'src/composables/useGiphyFetch'
 import { onMounted, computed, onBeforeUnmount, ref } from 'vue'
 import { useGiphyStore } from 'src/stores/giphyStore'
 import GifDetailModal from 'components/GifDetailModal.vue'
+import ScrollToTopButton from 'components/ScrollToTopButton.vue'
 
 const { getGifsOrStickers } = useGiphyFetch()
 const giphyStore = useGiphyStore()
