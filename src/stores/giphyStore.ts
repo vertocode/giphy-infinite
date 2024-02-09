@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useGiphyStore = defineStore('giphyStore', {
 	state: () => ({
-    gifsOrStickers: [],
+		gifsOrStickers: [],
 		totalCount: 0,
 		isLoading: false,
 		search: '',
