@@ -2,7 +2,7 @@
   <GifDetailModal :gif="gitDetailsModal" @close="gitDetailsModal = null"/>
   <main
     v-if="gifsOrStickers.length"
-    class="mt-8 flex gap-2 w-full px-10 justify-between items-center"
+    class="mt-8 flex gap-2 w-full px-5 justify-center items-center"
   >
     <div
       v-for="gifOrSticker in gifsOrStickers" :key="gifOrSticker.id"
