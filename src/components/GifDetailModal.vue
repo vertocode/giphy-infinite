@@ -33,44 +33,44 @@ const props = defineProps<Props>()
 const emits = defineEmits(['close'])
 
 const download = () => {
-  const gifUrl = props.gif?.images?.original?.url;
+	const gifUrl = props.gif?.images?.original?.url
 
-  if (gifUrl) {
-    // Fetch the GIF content as a Blob
-    fetch(gifUrl)
-      .then(response => response.blob())
-      .then(blob => {
-        // Create a Blob URL for the response
-        const blobUrl = URL.createObjectURL(blob);
+	if (gifUrl) {
+		// Fetch the GIF content as a Blob
+		fetch(gifUrl)
+			.then(response => response.blob())
+			.then(blob => {
+				// Create a Blob URL for the response
+				const blobUrl = URL.createObjectURL(blob)
 
-        // Create a temporary link
-        const link = document.createElement('a');
-        link.href = blobUrl;
-        link.download = props.gif.title.replaceAll(' ', '_').toLowerCase() + '.gif'
+				// Create a temporary link
+				const link = document.createElement('a')
+				link.href = blobUrl
+				link.download = props.gif.title.replaceAll(' ', '_').toLowerCase() + '.gif'
 
-        // Add the link to the DOM and trigger a click
-        document.body.appendChild(link);
-        link.click();
+				// Add the link to the DOM and trigger a click
+				document.body.appendChild(link)
+				link.click()
 
-        // Remove the link and revoke the Blob URL
-        document.body.removeChild(link);
-        URL.revokeObjectURL(blobUrl);
-      })
-      .catch(error => {
-        console.error('Error downloading:', error);
-      });
-  }
-};
+				// Remove the link and revoke the Blob URL
+				document.body.removeChild(link)
+				URL.revokeObjectURL(blobUrl)
+			})
+			.catch(error => {
+				console.error('Error downloading:', error)
+			})
+	}
+}
 
 watch(() => show.value,() => {
-  if (!show.value) {
-    emits('close')
-  }
+	if (!show.value) {
+		emits('close')
+	}
 })
 
 watch(() => props.gif, () => {
-  if (props.gif) {
-    show.value = true
-  }
+	if (props.gif) {
+		show.value = true
+	}
 })
 </script>

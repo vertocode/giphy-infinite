@@ -23,6 +23,6 @@ import { ref } from 'vue'
 const search = ref('')
 
 const searchGifs = () => {
-  console.log(search.value)
+	console.log(search.value)
 }
 </script>

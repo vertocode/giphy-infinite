@@ -29,23 +29,23 @@ const gifs = computed(() => giphyStore.gifs)
 const isLoading = computed(() => giphyStore.isLoading)
 
 const handleScroll = async () => {
-  const scrollY = window.scrollY;
-  const windowHeight = window.innerHeight;
-  const bodyHeight = document.body.offsetHeight;
+	const scrollY = window.scrollY
+	const windowHeight = window.innerHeight
+	const bodyHeight = document.body.offsetHeight
 
-  // Check if the scroll is almost in the end (95% of the page) and if is not in loading to add more items in the list
-  if ((scrollY + windowHeight >= bodyHeight * 0.95) && !isLoading.value) {
-    await getGifs()
-  }
+	// Check if the scroll is almost in the end (95% of the page) and if is not in loading to add more items in the list
+	if ((scrollY + windowHeight >= bodyHeight * 0.95) && !isLoading.value) {
+		await getGifs()
+	}
 }
 
 onMounted(async () => {
-  await getGifs()
-  window.addEventListener('scroll', handleScroll)
+	await getGifs()
+	window.addEventListener('scroll', handleScroll)
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll)
+	window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
