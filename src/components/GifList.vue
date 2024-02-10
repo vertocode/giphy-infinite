@@ -13,6 +13,7 @@
     <div
       v-for="gifOrSticker in gifsOrStickers" :key="gifOrSticker.id"
       class="bg-secondary cursor-pointer"
+      :data-cy="`${giphyStore.useStickers ? 'sticker' : 'gif'}-card`"
       @click="gitDetailsModal = gifOrSticker"
     >
       <q-img :src="gifOrSticker.images.original.url" class="w-12 w-52" />

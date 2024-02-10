@@ -2,6 +2,7 @@
   <div class="flex gap-5 w-full sm:w-3/5 justify-center mx-2">
     <div class="w-full flex gap-5 mx-3 justify-center">
       <q-input
+        data-cy="search-input"
         class="w-3/5"
         v-model="search"
         filled
@@ -10,6 +11,7 @@
         @keyup.enter="$emit('search', search)"
       />
       <q-btn
+        data-cy="search-button"
         color="secondary"
         label="Search"
         icon="search"
