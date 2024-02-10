@@ -5,6 +5,11 @@
     class="mt-8 flex gap-2 w-full px-5 justify-center items-center position-relative"
   >
     <ScrollToTopButton />
+    <div class="w-full flex justify-center gap-20" v-if="giphyStore.search">
+      <h3 class="text-bold">
+        {{ giphyStore.totalCount }} Results filtering by "{{ giphyStore.search }}".
+      </h3>
+    </div>
     <div
       v-for="gifOrSticker in gifsOrStickers" :key="gifOrSticker.id"
       class="bg-secondary cursor-pointer"
@@ -27,16 +32,17 @@
 import { useGiphyFetch } from 'src/composables/useGiphyFetch'
 import { onMounted, computed, onBeforeUnmount, ref } from 'vue'
 import { useGiphyStore } from 'src/stores/giphyStore'
+import type { GiphyObject } from 'src/types/giphy'
 import GifDetailModal from 'components/GifDetailModal.vue'
 import ScrollToTopButton from 'components/ScrollToTopButton.vue'
 
 const { getGifsOrStickers } = useGiphyFetch()
 const giphyStore = useGiphyStore()
 
-const gitDetailsModal = ref(null)
+const gitDetailsModal = ref<GiphyObject | null>(null)
 
-const gifsOrStickers = computed(() => giphyStore.gifsOrStickers)
-const isLoading = computed(() => giphyStore.isLoading)
+const gifsOrStickers = computed((): GiphyObject[] => giphyStore.gifsOrStickers)
+const isLoading = computed((): boolean => giphyStore.isLoading)
 
 const handleScroll = async () => {
 	if (isLoading.value || !gifsOrStickers.value.length) return

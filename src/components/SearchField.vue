@@ -41,6 +41,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const useStickers = ref(false)
-const search = ref('')
+const useStickers = ref<boolean>(false)
+const search = ref<string>('')
 </script>

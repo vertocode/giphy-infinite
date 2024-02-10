@@ -29,9 +29,7 @@ export const useGiphyFetch = () => {
 		})
 
 		giphyStore.setGifsOrStickers(response.data)
-		if (!search) {
-			giphyStore.setTotalCount(response.pagination.total_count)
-		}
+		giphyStore.setTotalCount(response.pagination.total_count)
 		giphyStore.setLoading(false)
 	}
 

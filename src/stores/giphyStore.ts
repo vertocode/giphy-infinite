@@ -1,7 +1,16 @@
-import { defineStore } from 'pinia'
+import { defineStore, StoreDefinition } from 'pinia'
+import type { GiphyObject } from 'src/types/giphy'
 
-export const useGiphyStore = defineStore('giphyStore', {
-	state: () => ({
+interface GiphyStore {
+  gifsOrStickers: GiphyObject[]
+  totalCount: number
+  isLoading: boolean
+  search: string
+  useStickers: boolean
+}
+
+export const useGiphyStore: StoreDefinition = defineStore('giphyStore', {
+	state: (): GiphyStore => ({
 		gifsOrStickers: [],
 		totalCount: 0,
 		isLoading: false,
@@ -10,20 +19,20 @@ export const useGiphyStore = defineStore('giphyStore', {
 	}),
 	getters: {},
 	actions: {
-		setGifsOrStickers(gifsOrStickers) {
+		setGifsOrStickers(gifsOrStickers: GiphyObject[]) {
 			this.gifsOrStickers.push(...gifsOrStickers)
 		},
-		setTotalCount(count) {
+		setTotalCount(count: number) {
 			this.totalCount = count
 		},
-		setLoading(isLoading) {
+		setLoading(isLoading: boolean) {
 			this.isLoading = isLoading
 		},
-		setSearch(search) {
+		setSearch(search: string) {
 			this.search = search
 		},
-		setUseStickers(useStickers) {
+		setUseStickers(useStickers: boolean) {
 			this.useStickers = useStickers
 		}
-	},
+	}
 })

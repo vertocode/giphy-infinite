@@ -7,9 +7,9 @@
           class="text-2xl absolute top-2 right-2 cursor-pointer text-white"
           @click="show = false"
         />
-        <h3 class="text-slate-50 text-2xl text-bold text-wrap mt-6">{{ gif.title }}</h3>
+        <h3 class="text-slate-50 text-2xl text-bold text-wrap mt-6">{{ gif?.title }}</h3>
         <div class="column items-center">
-          <q-img class="w-52 sm:w-96 mt-3 mx-auto" :src="gif.images.original.url" />
+          <q-img class="w-52 sm:w-96 mt-3 mx-auto" :src="gif?.images?.original?.url" />
           <q-btn
             class="bg-slate-200 w-52 sm:w-96"
             label="Download"
@@ -23,10 +23,12 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import type { GiphyObject } from 'src/types/giphy'
+
 const show = ref(false)
 
 interface Props {
-  gif: object | null
+  gif: GiphyObject | null
 }
 
 const props = defineProps<Props>()
@@ -36,23 +38,18 @@ const download = () => {
 	const gifUrl = props.gif?.images?.original?.url
 
 	if (gifUrl) {
-		// Fetch the GIF content as a Blob
 		fetch(gifUrl)
 			.then(response => response.blob())
 			.then(blob => {
-				// Create a Blob URL for the response
 				const blobUrl = URL.createObjectURL(blob)
 
-				// Create a temporary link
 				const link = document.createElement('a')
 				link.href = blobUrl
-				link.download = props.gif.title.replaceAll(' ', '_').toLowerCase() + '.gif'
+				link.download = props.gif?.title.replaceAll(' ', '_').toLowerCase() + '.gif'
 
-				// Add the link to the DOM and trigger a click
 				document.body.appendChild(link)
 				link.click()
 
-				// Remove the link and revoke the Blob URL
 				document.body.removeChild(link)
 				URL.revokeObjectURL(blobUrl)
 			})
