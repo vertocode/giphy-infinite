@@ -78,22 +78,22 @@ Now it should be able to access the app at `http://localhost:9000`. (If this por
 
 # Folder Structure
 
-| Folder           | Description                                                                   |
-|------------------|-------------------------------------------------------------------------------|
-| /src             | The main application folder, where the app source are located.                |
-| /src/assets      | aassets used in the platform are located.                                     |
-| /src/boot        | Axios configuration is located.                                               |
+| Folder           | Description                                                                  |
+|------------------|------------------------------------------------------------------------------|
+| /src             | The main application folder, where the app source are located.               |
+| /src/assets      | assets used in the platform are located.                                     |
+| /src/boot        | Axios configuration is located.                                              |
 | /src/components  | Almost all vue components are located. The ones that is not a layout or page. |
-| /src/composables | Used to create custom composables.                                            |
-| /src/css         | The default css configuration.                                                |
-| /src/layouts     | Vue component used as a layout.                                               |
-| /src/pages       | Vue component used as a page.                                                 |
-| /src/router      | Vue router config.                                                            |
-| /src/stores      | Store + config of Pinia.                                                      |
-| /src/types       | Types used to TypeScript.                                                     |
-| /src/utils       | Where is stored common functions.                                             |
-| /cypress         | E2E Tests with Cypress.                                                       |
-| /public          | Public images.                                                                |
+| /src/composables | Used to create custom composables.                                           |
+| /src/css         | The default css configuration.                                               |
+| /src/layouts     | Vue component used as a layout.                                              |
+| /src/pages       | Vue component used as a page.                                                |
+| /src/router      | Vue router config.                                                           |
+| /src/stores      | Store + config of Pinia.                                                     |
+| /src/types       | Types used to TypeScript.                                                    |
+| /src/utils       | Where is stored common functions.                                            |
+| /cypress         | E2E Tests with Cypress.                                                      |
+| /public          | Public images.                                                               |
 
 # How to run e2e tests
 
