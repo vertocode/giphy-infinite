@@ -6,3 +6,4 @@
 .eslintrc.cjs
 /src-ssr
 /quasar.config.*.temporary.compiled*
+quasar.config.js
